@@ -1,0 +1,58 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function spj_perm() {
+    return array(
+        'access penata content',
+		'access laporan penata'
+	);
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function spj_menu() {
+//ITEM EDIT (DB Tata U)
+	$items['spj/edit'] = array (
+      'title' => 'SPJ',
+	  'description' => 'SPJ',
+	  //'title callback' => 'spj_title_callback',	  
+      'page callback' => 'spj_edit_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spj_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+//ARSIP(DB Bendahara)
+	$items['spjarsip'] = array (
+      'title' => 'Buku Kas',
+	  'description' => 'Buku Kas',
+	  //'title callback' => 'spj_arsip_title_callback',	  
+      'page callback' => 'spj_arsip_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spj_arsip_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+//................................	
+    $items['spj/delete'] = array (
+      'title' => 'Hapus SPJ',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('spj_delete_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'spj_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );	
+
+    return $items;
+}
+

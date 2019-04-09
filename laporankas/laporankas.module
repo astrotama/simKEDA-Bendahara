@@ -1,0 +1,217 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function laporankas_perm() {
+    return array(
+        'access penata content',
+		'access laporan2 penata'
+	);
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function laporankas_menu() {
+
+	$items['laporankas'] = array (
+      'title' => 'Laporan Kas',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporan_menu_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporan_menu_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk0'] = array (
+      'title' => 'Laporan BK-0 (Buku Kas Umum Pembantu)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk0_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk0_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk1'] = array (
+      'title' => 'Laporan BK-1 (Buku Kas Umum)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk1_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk1_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk1std'] = array (
+      'title' => 'Laporan BK-1 (Buku Kas Umum Standard)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk1_std_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk1_std_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanberita'] = array (
+      'title' => 'Laporan Berita',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanberita_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanberita_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk1b'] = array (
+      'title' => 'Laporan BK-1 (Buku Kas Umum)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk1b_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk1b_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk2'] = array (
+      'title' => 'Laporan BK-2 (Buku Panjar)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk2_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk2_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk3'] = array (
+      'title' => 'Laporan BK-3 (Buku Pajak)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk3_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk3_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk4'] = array (
+      'title' => 'Laporan BK-4 ',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk4_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk4_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk5'] = array (
+      'title' => 'Laporan BK-5 (Rekap Kegiatan)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk5_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk5_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk6'] = array (
+      'title' => 'Laporan BK-6 (Rekap Rekening)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk6_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk6_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk8'] = array (
+      'title' => 'Laporan BK-8 (SPJ Bendahara)',
+	  'description' => 'laporan2 user',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk8_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk8_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporanbk8p'] = array (
+      'title' => 'Laporan BK-8 (SPJ Bendahara Pembantu)',
+	  'description' => 'Laporan BK-8 (SPJ Bendahara Pembantu',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporanbk8pembantu_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporanbk8pembantu_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['laporanpajak'] = array (
+      'title' => 'Laporan Pajak',
+	  'description' => 'Laporan Pajak',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporan_pajak_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporan_pajak_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+	$items['laporan_daftar'] = array (
+      'title' => 'Laporan Daftar',
+	  'description' => 'Laporan Daftar',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporan_daftar_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporan_daftar_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['laporan_rekapitulasi'] = array (
+      'title' => 'Laporan Rekapitulasi',
+	  'description' => 'Laporan Rekapitulasi',
+	  //'title callback' => 'laporankas_title_callback',	  
+      'page callback' => 'laporan_rekapitulasi_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'laporan_rekapitulasi_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+  $items['laporan_realisasi'] = array (
+    'title' => 'Laporan Realisasi',
+    'description' => 'Laporan Realisasi',
+    //'title callback' => 'laporankas_title_callback',    
+    'page callback' => 'laporan_realisasi_main',
+    //'access arguments' => array ('access content'),
+    'access callback' => 'user_is_logged_in',
+    'weight' => 11,
+    'file' => 'laporan_realisasi_main.php',
+    'type' => MENU_NORMAL_ITEM,
+  );
+    return $items;
+}
+
+
+function laporankas_title_callback() {
+    return t('Laporan Kas');
+}
+
+

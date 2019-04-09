@@ -1,0 +1,125 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function pengembalian_permission() {
+  return array(
+    'pengembalian permission' => array(
+      'title' => t('pengembalian permission'),
+      'description' => t('pengembalian permission'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function pengembalian_menu() {
+	$items['pengembaliankas/baru'] = array (
+      'title' => 'Pengembalian Kas | Baru',
+	  'description' => 'Pengembalian Kas | Baru',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pengembaliankas_new_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pengembaliankas_new_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['pengembaliankas/edit'] = array (
+      'title' => 'Pengembalian',
+	  'description' => 'Pengembalian',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pengembaliankas_edit_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pengembaliankas_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['pengembalianspj/baru'] = array (
+      'title' => 'Pengembalian Kas | Baru',
+	  'description' => 'Pengembalian Kas | Baru',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pengembalianspj_newpick_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pengembalianspj_newpick_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['pengembalianspj/barupost'] = array (
+      'title' => 'Pengembalian Kas | Baru',
+	  'description' => 'Pengembalian Kas | Baru',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pengembalianspj_newpost_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pengembalianspj_newpost_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['pengembalianspj/edit'] = array (
+      'title' => 'Pengembalian',
+	  'description' => 'Pengembalian',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pengembalianspj_edit_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pengembalianspj_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['pindahbuku/baru'] = array (
+      'title' => 'Pindah Buku | Baru',
+	  'description' => 'Pindah Buku | Baru',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pindahbuku_newpick_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pindahbuku_newpick_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['pindahbuku/barupost'] = array (
+      'title' => 'Pindah Buku | Baru',
+	  'description' => 'Pindah Buku | Baru',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pindahbuku_newpost_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pindahbuku_newpost_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['pindahbuku/edit'] = array (
+      'title' => 'Pindah Buku',
+	  'description' => 'Pindah Buku',
+	  //'title callback' => 'pengembalian_title_callback',	  
+      'page callback' => 'pindahbuku_edit_main',
+      'access arguments' => array ('pengembalian permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'pindahbuku_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+	
+    $items['pengembalian/delete'] = array (
+      'title' => 'Hapus Pengembalian',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pengembalian_delete_form'),
+	  'access arguments' => array ('pengembalian permission'),
+      'file' => 'pengembalian_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );	
+
+
+    return $items;
+}
+

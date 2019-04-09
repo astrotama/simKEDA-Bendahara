@@ -1,0 +1,113 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function panjar_permission() {
+  return array(
+    'panjar permission' => array(
+      'title' => t('panjar permission'),
+      'description' => t('Transaksi Panjar ke Bendahara Bidang'),
+    ),
+    'panjarseksi permission' => array(
+      'title' => t('panjarseksi permission'),
+      'description' => t('Transaksi Panjar ke PPTK'),
+    ),
+    'panjardelete permission' => array(
+      'title' => t('panjardelete permission'),
+      'description' => t('Menghapus Transaksi Panjar/PPTK'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function panjar_menu() {
+	$items['panjar/baru'] = array (
+      'title' => 'Panjar | Baru',
+	  'description' => 'Panjar | Baru',
+	  //'title callback' => 'panjar_title_callback',	  
+      'page callback' => 'panjar_new_main',
+      'access arguments' => array ('panjar permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'panjar_new_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['panjar/edit'] = array (
+      'title' => 'Panjar',
+	  'description' => 'Panjar',
+	  //'title callback' => 'panjar_title_callback',	  
+      'page callback' => 'panjar_edit_main',
+      'access arguments' => array ('panjar permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'panjar_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+
+    $items['panjar/delete'] = array (
+      'title' => 'Hapus Panjar',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('panjar_delete_form'),
+	  'access arguments' => array ('panjardelete permission'),
+      'file' => 'panjar_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );	
+
+	$items['panjararsip'] = array (
+      'title' => 'Buku Panjar',
+	  'description' => 'Buku Panjar',
+	  //'title callback' => 'spj_arsip_title_callback',	  
+      'page callback' => 'panjar_arsip_main',
+      //'access arguments' => array ('access content'),
+	  'access arguments' => array ('panjar permission'),
+      'weight' => 11,
+      'file' => 'panjar_arsip_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['panjarseksi/baru'] = array (
+      'title' => 'Panjar PPTK| Baru',
+	  'description' => 'Panjar  PPTK| Baru',
+	  //'title callback' => 'panjar_title_callback',	  
+      'page callback' => 'panjarseksi_new_main',
+      'access arguments' => array ('panjarseksi permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'panjarseksi_new_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['panjarseksi/edit'] = array (
+      'title' => 'Panjar PPTK',
+	  'description' => 'Panjar PPTK',
+	  //'title callback' => 'panjar_title_callback',	  
+      'page callback' => 'panjarseksi_edit_main',
+      'access arguments' => array ('panjarseksi permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'panjarseksi_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+
+	$items['panjarseksiarsip'] = array (
+      'title' => 'Buku Panjar PPTK',
+	  'description' => 'Buku Panjar PPTK',
+	  //'title callback' => 'spj_arsip_title_callback',	  
+      'page callback' => 'panjarseksi_arsip_main',
+      //'access arguments' => array ('access content'),
+	  'access arguments' => array ('panjarseksi permission'),
+      'weight' => 11,
+      'file' => 'panjarseksi_arsip_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+    return $items;
+}
+

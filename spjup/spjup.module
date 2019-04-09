@@ -1,0 +1,72 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function spjup_permission() {
+  return array(
+    'spj penerimaan kas permission' => array(
+      'title' => t('spj penerimaan kas permission'),
+      'description' => t('spj penerimaan kas permission'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function spjup_menu() {
+	$items['spjup/baru'] = array (
+      'title' => 'Penerimaan Kas | Pilih SP2D',
+	  'description' => 'Penerimaan Kas | Pilih SP2D',
+	  //'title callback' => 'spjup_title_callback',	  
+      'page callback' => 'spjup_newpick_main',
+      'access arguments' => array ('spj penerimaan kas permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjup_newpick_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['spjup/barupost'] = array (
+      'title' => 'Penerimaan Kas | Pilih SP2D',
+	  'description' => 'Penerimaan Kas | Pilih SP2D',
+	  //'title callback' => 'spjup_title_callback',	  
+      'page callback' => 'spjup_newpost_main',
+      'access arguments' => array ('spj penerimaan kas permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjup_newpost_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	
+	$items['spjup/edit'] = array (
+      'title' => 'Penerimaan Kas',
+	  'description' => 'Penerimaan Kas',
+	  //'title callback' => 'spjup_title_callback',	  
+      'page callback' => 'spjup_edit_main',
+      'access arguments' => array ('spj penerimaan kas permission'),
+	  //'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjup_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+
+    $items['spjup/delete'] = array (
+      'title' => 'Hapus Penerimaan Kas',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('spjup_delete_form'),
+      'access arguments' => array ('spj penerimaan kas permission'),
+	  //'access arguments' => array ('spj penerimaan kas permission'),
+      'file' => 'spjup_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );	
+
+
+    return $items;
+}
+

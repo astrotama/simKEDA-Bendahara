@@ -1,0 +1,6 @@
+; $Id$
+name = "Perbendaharaan - Laporan Kas"
+description = "Perbendaharaan - Laporan Kas"
+;dependencies[] = 
+core = 7.x
+package="simKEDA"

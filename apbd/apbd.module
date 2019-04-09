@@ -1,0 +1,2145 @@
+<?php
+
+function apbd_menu() {
+
+	$items['apbd/chart'] = array (
+	  'title' => 'Analisis',
+      'page callback' => 'apbd_chart_main',
+      'page arguments' => array('apbd_chart_main'),
+      'access callback' => 'user_is_logged_in',
+      'file' => 'apbd_chart_main.php',
+      'type' => MENU_CALLBACK,
+	  
+    );
+
+	
+	//APBD
+	$items['anggaranupdate'] = array (
+      'title' => 'Update Anggaran',
+	  //'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'anggaranupdate_edit_main',
+      //'access arguments' => array ('access content'),
+	  //'access arguments' => array ('jurnal pendapatan pusat'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'tatausaha/anggaranupdate_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+
+	//SKPD 
+	$items['opd'] = array (
+      'title' => 'Daftar OPD',
+	  //'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'opd_main',
+      //'access arguments' => array ('access content'),
+	  //'access arguments' => array ('jurnal pendapatan pusat'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'opd/opd_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );		
+	$items['opd/edit'] = array (
+      'title' => 'OPD',
+	  'description' => 'Laporan user',
+	  'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'opd_edit_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'opd/opd_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+
+	$items['opd/bidang'] = array (
+      'title' => 'Bidang/Bagian',
+	  'description' => 'Bidang OPD',
+	  'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'opd_bidang_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'opd/opd_bidang_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	
+$items['opd/pa'] = array (
+      'title' => 'Seksi/Sub Bagian',
+	  'description' => 'Seksi/Sub Bagian',
+	  'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'opd_pa_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'opd/opd_pa_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+
+
+	$items['kegiatan/bidang'] = array (
+      'title' => 'Kegiatan per Bidang',
+	  'description' => 'Kegiatan per Bidang',
+	  'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'kegiatan_bidang_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'kegiatan/kegiatan_bidang_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+	
+	//KUITANSI 
+	$items['kuitansi/edit'] = array (
+      'title' => 'Kuitansi A2-1',
+	  //'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'kuitansi_edit_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'tatausaha/kuitansi_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+	$items['kuitansi/edita2'] = array (
+      'title' => 'Kuitansi A2-2',
+	  //'title callback' => 'laporan_title_callback',	  
+      'page callback' => 'kuitansi_a22_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'tatausaha/kuitansi_a22_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );	
+  
+	//SETTING SP2D
+    $items['settingsp2d'] = array (
+      'title' => 'Penandatangan SP2D',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('setting_sp2d_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'setting/setting_sp2d_form.php',
+      'type' => MENU_CALLBACK,
+    );		
+
+	//OPERATOR
+	$items['operators'] = array (
+      'title' => 'Daftar Operator',
+	  'description' => 'Daftar Operator',
+	  //'title callback' => 'opt_title_callback',	  
+      'page callback' => 'apbdop_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'apbdop/apbdop_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['operator/edit'] = array (
+      'title' => 'Operator',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('apbdop_edit_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'apbdop/apbdop_edit_form.php',
+      'type' => MENU_CALLBACK,
+    );		
+    $items['operator/delete'] = array (
+      'title' => 'Hapus Operator',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('apbdop_delete_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'apbdop/apbdop_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );	
+
+    return $items;
+}
+
+
+function print_pdf_l($output) {
+	 
+	 $pdf=apbd_pdfd7($output,'L','','Pemerintah Kabupaten Jepara ');
+		$title = 'abc.pdf';
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: inline; filename="'.$title.'"');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.filesize($pdf));
+		header('Accept-Ranges: bytes');
+		header('Expires: 0');
+		header('Cache-Control: public, must-revalidate, max-age=0');  
+	  
+	  print $pdf;
+	  return NULL;	
+	  exit;
+}
+
+function print_pdf_p($output) {
+	 
+	 $pdf=apbd_pdfd7($output,'P','<p>&nbsp;<p>','Pemerintah Kabupaten Jepara ');
+		$title = 'abc.pdf';
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: inline; filename="'.$title.'"');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.filesize($pdf));
+		header('Accept-Ranges: bytes');
+		header('Expires: 0');
+		header('Cache-Control: public, must-revalidate, max-age=0');  
+	  
+	  print $pdf;
+	  return NULL;
+		exit;
+}
+
+function print_pdf_p2($output) {
+	 
+	 $pdf=apbd_pdfd72($output,'P','<p>&nbsp;<p>','Pemerintah Kabupaten Jepara ');
+		$title = 'abc.pdf';
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: inline; filename="'.$title.'"');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.filesize($pdf));
+		header('Accept-Ranges: bytes');
+		header('Expires: 0');
+		header('Cache-Control: public, must-revalidate, max-age=0');  
+	  
+	  print $pdf;
+	  return NULL;
+		exit;
+}
+//$pdf->Image('files/logo_kecil.png', 16, 20+$topmargin-10, 20, 18, 'PNG', '', '',true, 150, '', false, false, 0, false, false, false);
+function apbd_pdfd7($html,$orientation,$header,$footer) {
+  // Get the content we want to convert into pdf.
+  //theme('tcpdf_example_basic_html');
+  $footer=' ';
+  /*
+  header('Content-Type: application/pdf');
+  header('Content-Length: ' . strlen($pdf));
+  //header('Content-Disposition: attachment; filename="mydocument.pdf"');
+  header('Content-Disposition: inline; filename="mydocument.pdf"');
+  // Never make an instance of TCPDF or TCPDFDrupal classes manually.
+  // Use tcpdf_get_instance() instead.
+  */
+	
+	/*
+	$title = 'abc.pdf';
+	header('Content-Type: application/pdf');
+	header('Content-Disposition: inline; filename="'.$title.'"');
+	header('Content-Transfer-Encoding: binary');
+	header('Content-Length: '.filesize($html));
+	header('Accept-Ranges: bytes');
+	header('Expires: 0');
+	header('Cache-Control: public, must-revalidate, max-age=0');  
+	*/
+	
+  $tcpdf = tcpdf_get_instance();
+  /* DrupalInitialize() is an extra method added to TCPDFDrupal that initializes
+  *  some TCPDF variables (like font types), and makes possible to change the
+  *  default header or footer without creating a new class.
+  */
+  $tcpdf->DrupalInitialize(array(
+    'footer' => array(
+      'html' => $footer,
+    ),
+    'header' => array(
+	  'html' => $header,
+    ),
+	'orientation' => $orientation,
+  ));
+  // Insert the content. Note that DrupalInitialize automaticly adds the first
+  // page to the pdf document.
+  $tcpdf->writeHTML($html);
+  //$tcpdf->Output('example_002.pdf', 'S');
+
+  return $tcpdf->Output('abc.pdf', 'S');
+  
+  
+}
+function apbd_pdfd72($html,$orientation,$header,$footer) {
+  // Get the content we want to convert into pdf.
+  //theme('tcpdf_example_basic_html');
+  $footer=' ';
+  /*
+  header('Content-Type: application/pdf');
+  header('Content-Length: ' . strlen($pdf));
+  //header('Content-Disposition: attachment; filename="mydocument.pdf"');
+  header('Content-Disposition: inline; filename="mydocument.pdf"');
+  // Never make an instance of TCPDF or TCPDFDrupal classes manually.
+  // Use tcpdf_get_instance() instead.
+  */
+	
+	/*
+	$title = 'abc.pdf';
+	header('Content-Type: application/pdf');
+	header('Content-Disposition: inline; filename="'.$title.'"');
+	header('Content-Transfer-Encoding: binary');
+	header('Content-Length: '.filesize($html));
+	header('Accept-Ranges: bytes');
+	header('Expires: 0');
+	header('Cache-Control: public, must-revalidate, max-age=0');  
+	*/
+	
+  $tcpdf = tcpdf_get_instance();
+  /* DrupalInitialize() is an extra method added to TCPDFDrupal that initializes
+  *  some TCPDF variables (like font types), and makes possible to change the
+  *  default header or footer without creating a new class.
+  */
+  $tcpdf->DrupalInitialize(array(
+    'footer' => array(
+      'html' => $footer,
+    ),
+    'header' => array(
+	  'html' => $header,
+    ),
+	'orientation' => $orientation,
+  ));
+  // Insert the content. Note that DrupalInitialize automaticly adds the first
+  // page to the pdf document.
+  $tcpdf->writeHTML($html);
+  //$tcpdf->Output('example_002.pdf', 'S');
+  $tcpdf->Image('files/logo_kecil.png', 16, 35+$topmargin-10, 20, 18, 'PNG', '', '',true, 150, '', false, false, 0, false, false, false);	
+  return $tcpdf->Output('abc.pdf', 'S');
+  
+  
+}
+
+function apbd_ExportPDFx($pageOrientation, $pageSize, $htmlContent, $pdfFiel) {
+
+	$path = libraries_get_path('tcpdf');
+	if (($path) && (file_exists($path . '/tcpdf.php'))) {
+		require_once($path . '/tcpdf.php');
+		require_once($path . '/config/lang/eng.php');
+	}
+  	set_time_limit(0);
+	ini_set('memory_limit', '1024M');
+
+	//require_once('libraries/tcpdf/config/lang/eng.php');
+    //require_once('libraries/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+		  //$this->Cell(0, 10, $this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');     
+		  $this->Cell(0,0,$this->PageNo(),'T',0,'R');
+		}      
+	} 
+	
+    $pdf = new MYPDF($pageOrientation, PDF_UNIT, $pageSize, true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 10));
+    $pdf->setFooterMargin(10);
+	$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+	if ($pageOrientation=='L') {
+		$pdf->setHeaderMargin(20);
+		//$pdf->SetMargins(5,20);
+		$pdf->SetMargins(10,20);
+	} else {
+		$pdf->setHeaderMargin(10);
+		$pdf->SetMargins(20,10);
+	}
+	
+	//$pdf->SetMargins(15,15);
+    $pdf->SetAutoPageBreak(true, 11);
+    $pdf->setLanguageArray($l);
+    $pdf->SetFont('helvetica','', 10);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function print_pdf_p_sp2d($output,$output2) {
+	 
+	 $pdf=apbd_pdfd7_sp2d($output,'P','<p>&nbsp;<p>',$output2);
+		$title = 'abc.pdf';
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: inline; filename="'.$title.'"');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.filesize($pdf));
+		header('Accept-Ranges: bytes');
+		header('Expires: 0');
+		header('Cache-Control: public, must-revalidate, max-age=0');  
+	  
+	  print $pdf;
+	  return NULL;	
+}
+
+function apbd_pdfd7_sp2d($html,$orientation,$header,$footer) {
+  // Get the content we want to convert into pdf.
+  //theme('tcpdf_example_basic_html');
+  //$footer=' ';
+  /*
+  header('Content-Type: application/pdf');
+  header('Content-Length: ' . strlen($pdf));
+  //header('Content-Disposition: attachment; filename="mydocument.pdf"');
+  header('Content-Disposition: inline; filename="mydocument.pdf"');
+  // Never make an instance of TCPDF or TCPDFDrupal classes manually.
+  // Use tcpdf_get_instance() instead.
+  */
+	
+	/*
+	$title = 'abc.pdf';
+	header('Content-Type: application/pdf');
+	header('Content-Disposition: inline; filename="'.$title.'"');
+	header('Content-Transfer-Encoding: binary');
+	header('Content-Length: '.filesize($html));
+	header('Accept-Ranges: bytes');
+	header('Expires: 0');
+	header('Cache-Control: public, must-revalidate, max-age=0');  
+	*/
+	
+  $tcpdf = tcpdf_get_instance();
+  /* DrupalInitialize() is an extra method added to TCPDFDrupal that initializes
+  *  some TCPDF variables (like font types), and makes possible to change the
+  *  default header or footer without creating a new class.
+  */
+  $tcpdf->DrupalInitialize(array(
+    'footer' => array(
+      'html' => $footer,
+	  'margin'=>'sp2d',
+    ),
+    'header' => array(
+	  'html' => $header,
+    ),
+	'orientation' => $orientation,
+  ));
+  // Insert the content. Note that DrupalInitialize automaticly adds the first
+  // page to the pdf document.
+  $tcpdf->writeHTML($html);
+  //$tcpdf->writeHTMLCell(30, 10, 260, 195, "<font color='#f00'>PEMERINTAH KABUPATEN JEPARA</font>", 1, 'C', 0, 0, '', '', true);
+  //$tcpdf->Output('example_002.pdf', 'S');
+
+  return $tcpdf->Output('abc.pdf', 'S');
+  exit();
+  
+}
+
+
+function apbd_pdfd7_x($html,$orientation,$header,$footer) {
+  // Get the content we want to convert into pdf.
+  //theme('tcpdf_example_basic_html');
+  /*header('Content-Type: application/pdf');
+  header('Content-Length: ' . strlen($pdf));
+  header('Content-Disposition: attachment; filename="mydocument.pdf"');*/
+  // Never make an instance of TCPDF or TCPDFDrupal classes manually.
+  // Use tcpdf_get_instance() instead.
+  $tcpdf = tcpdf_get_instance();
+  /* DrupalInitialize() is an extra method added to TCPDFDrupal that initializes
+  *  some TCPDF variables (like font types), and makes possible to change the
+  *  default header or footer without creating a new class.
+  */
+  $tcpdf->DrupalInitialize(array(
+    'footer' => array(
+      'html' => $footer,
+    ),
+    'header' => array(
+	  'html' => $header,
+    ),
+	'orientation' => $orientation,
+  ));
+  // Insert the content. Note that DrupalInitialize automaticly adds the first
+  // page to the pdf document.
+  $tcpdf->writeHTML($html);
+  //$tcpdf->Output('example_002.pdf', 'S');
+
+  return $tcpdf->Output('', 'S');
+
+  
+}
+
+function apbd_fn($num) {
+
+    //return number_format((float)$num, 0, ',', '.');
+	
+	$x = number_format((float)$num, 0, ',', '.');
+	if (substr($x,0,1)=='-' ) $x = '('. substr($x,1) . ')';
+	return $x;
+}
+
+function apbd_fn2($num) {
+    return number_format((float)$num, 2, ',', '.');
+}
+
+function apbd_fn1($num) {
+    return number_format((float)$num, 1, ',', '.');
+}
+function createTable($header,$row){
+	$str='<table class="table table-striped">';
+	for($n=0;$n<sizeof($header);$n++){
+		$str.='<th>'.strtoupper($header[$n]['data']).'</th>';
+		
+	}
+	$str.='';/*
+	$str='<table><th><td>a</td>';
+	$str.='<td>b</td></th></table>';
+	
+	$str.='<td>b</td></th></table>';*/
+	for($n=0;$n<sizeof($row);$n++)
+	{
+		$str.='<tr >';
+		for($m=0;$m<sizeof($row[$n]);$m++)
+		{
+			if(isset($row[$n][$m]['data']) &&  $row[$n][$m]['data']!=null && $m!=sizeof($row[$n])-1){
+				$str.='<td align="'.$row[$n][$m]['align'].'">'.$row[$n][$m]['data'].'</td>';
+			}
+			else{
+				$str.='<td>'.$row[$n][$m].'</td>';
+				//drupal_set_message($row[$n][$m]);
+			}
+			  
+		  
+		}
+		$str.='</tr>';
+	}
+	$str.='</table>';
+	return $str;
+}
+
+function createlink($name,$link){
+	return '<a href="'.$link.'">'.$name.'</a>';
+}
+function apbd_fd($dt) {
+	if (is_null($dt))
+		return '';
+	else
+		return date('d-m-Y',strtotime($dt));
+}
+
+function apbd_fd_long($dt) {
+	if (is_null($dt))
+		return '';
+	else
+		return t(date('j F Y',strtotime($dt)));
+}
+
+function apbd_render_image() {
+	return '[bg|{001C4CEE-D7CA-457F-A877-47F3C9DCB669}| 10 | 150 | random |10 | # 000000]';
+}
+
+function apbd_terbilang($x){
+	$t = apbd_terbilangx($x);
+	if ($t == '' || $t == ' ')
+		return '# N.i.h.i.l #';
+	else
+		return '# ' . $t . ' Rupiah #';
+}
+
+function apbd_terbilangx($x){
+  $abil = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
+  if ($x < 12)
+    return " " . $abil[$x];
+  elseif ($x < 20)
+    return apbd_terbilangx($x - 10) . "belas";
+  elseif ($x < 100)
+    return apbd_terbilangx($x / 10) . " Puluh" . apbd_terbilangx($x % 10);
+  elseif ($x < 200)
+    return " Seratus" . apbd_terbilangx($x - 100);
+  elseif ($x < 1000)
+    return apbd_terbilangx($x / 100) . " Ratus" . apbd_terbilangx($x % 100);
+  elseif ($x < 2000)
+    return " Seribu" . apbd_terbilangx($x - 1000);
+  elseif ($x < 1000000)
+    return apbd_terbilangx($x / 1000) . " Ribu" . apbd_terbilangx($x % 1000);
+  elseif ($x < 1000000000)
+    return apbd_terbilangx($x / 1000000) . " Juta" . apbd_terbilangx($x % 1000000);
+  elseif ($x < 1000000000000)
+    return apbd_terbilangx($x / 1000000000) . " Milyar" . apbd_terbilangx($x % 1000000000);
+}
+
+function apbd_format_rek_obyek($rek) {
+	return substr_replace($rek, '.', 3, 0);
+}
+
+function apbd_format_rek_rincianobyek($rek) {
+	$x = substr_replace($rek, '.', 5, 0);
+	return substr_replace($x, '.', 3, 0);
+}
+
+function apbd_getuseruk() {
+	
+	if (isAdministrator())
+		$x = '81';
+	else {
+	
+		$user =  user_load($GLOBALS['user']->uid);
+
+		$x = '';
+		$query = db_select('apbdop', 'o');
+		$query->fields('o', array('kodeuk'));
+		$query->condition('o.username', $user->name, '=');
+		$results = $query->execute();
+		foreach ($results as $data) {
+			$x = $data->kodeuk;
+		}
+		if ($x=='') $x = '81';
+	}
+	return $x;	
+}
+
+function apbd_getusersuk() {
+	$user =  user_load($GLOBALS['user']->uid);
+	
+	$x = '';
+	$query = db_select('apbdop', 'o');
+	$query->fields('o', array('kodesuk'));
+	$query->condition('o.username', $user->name, '=');
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$x = $data->kodesuk;
+	}
+	if ($x=='') $x = '8101';
+	return $x;	
+}
+
+
+
+function apbd_hitungpersen($anggaran, $realisasi){
+	if ($anggaran == 0) 
+		if ($realisasi == 0) 	
+			$x = 0;
+		else 
+			$x = 100;
+		
+	else
+		$x = ($realisasi/$anggaran)*100;
+	
+	return $x;
+}
+
+function apbd_get_dbvalue($val){
+	$x = (real) $val;
+	return $x;
+}
+
+function isSuperuser() {
+	$user =  user_load($GLOBALS['user']->uid);
+	if (in_array('superuser', $user->roles))
+		return true;
+	return (false || isAdministrator());	
+}
+
+function isUserSKPD() {
+	$user =  user_load($GLOBALS['user']->uid);
+	if (in_array('skpd', $user->roles))
+		return true;
+	return false;
+}
+
+function isUserPembantu() {
+	$user =  user_load($GLOBALS['user']->uid);
+	if (in_array('pembantu', $user->roles))
+		return true;
+	return false;
+}
+
+function isUserSeksi() {
+	$user =  user_load($GLOBALS['user']->uid);
+	if (in_array('seksi', $user->roles))
+		return true;
+	return false;
+}
+
+function isAdministrator() {
+	$user =  user_load($GLOBALS['user']->uid);
+	if (user_access('Administer Nodes', $user))
+		return true;
+	return false;		
+}
+
+function apbd_ExportPDF($pageOrientation, $pageSize, $htmlContent, $pdfFiel) {
+
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+		  //$this->Cell(0, 10, $this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');     
+		  $this->Cell(0,0,$this->PageNo(),'T',0,'R');
+		}      
+	} 
+	
+    $pdf = new MYPDF($pageOrientation, PDF_UNIT, $pageSize, true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 10));
+    $pdf->setFooterMargin(10);
+	$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+	if ($pageOrientation=='L') {
+		$pdf->setHeaderMargin(20);
+		//$pdf->SetMargins(5,20);
+		$pdf->SetMargins(10,20);
+	} else {
+		$pdf->setHeaderMargin(10);
+		$pdf->SetMargins(20,10);
+	}
+	
+	//$pdf->SetMargins(15,15);
+    $pdf->SetAutoPageBreak(true, 11);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('helvetica','', 20);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+function apbd_ExportBerita_P($htmlContent, $marginatas, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+		  //$this->Cell(0, 10, $this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');     
+		  $this->Cell(0,0,$this->PageNo(),'T',0,'R');
+		}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 9));
+    $pdf->setFooterMargin(10);
+	$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->setHeaderMargin(10);
+	$pdf->SetMargins(15, $marginatas);
+	
+	//$pdf->SetMargins(15,15);
+    $pdf->SetAutoPageBreak(true, 11);
+    $pdf->setLanguageArray($l);
+    $pdf->SetFont('helvetica','', 10);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportPDF_P($htmlContent, $marginatas, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+		  //$this->Cell(0, 10, $this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');     
+		  $this->Cell(0,0,$this->PageNo(),'T',0,'R');
+		}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 9));
+    $pdf->setFooterMargin(10);
+	$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->setHeaderMargin(10);
+	$pdf->SetMargins(15, $marginatas);
+	
+	//$pdf->SetMargins(15,15);
+    $pdf->SetAutoPageBreak(true, 11);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('helvetica','', 20);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportPDF_L($htmlContent, $marginatas, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+		  //$this->Cell(0, 10, $this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');     
+		  $this->Cell(0,0,$this->PageNo(),'T',0,'R');
+		}      
+	} 
+	 
+    $pdf = new MYPDF('L', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 9));
+    $pdf->setFooterMargin(10);
+	$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->setHeaderMargin(10);
+	$pdf->SetMargins(10, $marginatas);
+	
+	//$pdf->SetMargins(15,15);
+    $pdf->SetAutoPageBreak(true, 11);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('helvetica','', 20);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSPP($htmlContent, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('Courier', 'I', 9);
+			// Page number
+			//$this->Cell(0, 10, 'Hal. '.$this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');   
+			
+			$this->Cell(0,0,'PEMERINTAH KABUPATEN JEPARA TA. ' . apbd_tahun(),'T',0,'L');
+			$ts = date("md:His|y");
+			//if ($base < 9998) {
+			//	$halaman = $this->PageNo() + $base;
+			//	$this->Cell(0,0,$halaman ,'T',0,'R');
+			//} else
+			//	$this->Cell(0,0,'' , 'T',0,'');	
+			$this->Cell(0,0,$ts ,'T',0,'R');			}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(10);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	$ypos = $pdf->GetY() - 43;
+	$xpos = $pdf->GetX() + 5;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	/*
+	$style = array(
+		'border' => true,
+		'vpadding' => 'auto',
+		'hpadding' => 'auto',
+		'fgcolor' => array(0,0,0),
+		'bgcolor' => false, //array(255,255,255)
+		'module_width' => 1, // width of a single module in points
+		'module_height' => 1 // height of a single module in points
+	);	
+	$pdf->write2DBarcode('http://simkeda.astrotama.com/sppgaji/edit/0600001', 'QRCODE,Q', $xpos, $ypos, 30, 30, $style, 'N');
+	*/
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSP2D($htmlContent,$footer, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		var $htmlFooter;
+		public function setHtmlFooter($htmlFooter) {
+			$this->htmlFooter = $htmlFooter;
+		}
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('Courier', '', 9);
+			$this->writeHTML($this->htmlFooter);
+			
+		}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+	$pdf->setHtmlFooter($footer);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(23, 23, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(93);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	$ypos = $pdf->GetY() - 43;
+	$xpos = $pdf->GetX() + 5;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	/*
+	$style = array(
+		'border' => true,
+		'vpadding' => 'auto',
+		'hpadding' => 'auto',
+		'fgcolor' => array(0,0,0),
+		'bgcolor' => false, //array(255,255,255)
+		'module_width' => 1, // width of a single module in points
+		'module_height' => 1 // height of a single module in points
+	);	
+	$pdf->write2DBarcode('http://simkeda.astrotama.com/sppgaji/edit/0600001', 'QRCODE,Q', $xpos, $ypos, 30, 30, $style, 'N');
+	*/
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSPM($htmlContent, $pdfFiel, $url) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('Courier', 'I', 9);
+			// Page number
+			//$this->Cell(0, 10, 'Hal. '.$this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');   
+			
+			$this->Cell(0,0,'PEMERINTAH KABUPATEN JEPARA TA. ' . apbd_tahun(),'T',0,'L');
+			$ts = date("md:His|y");
+			//if ($base < 9998) {
+			//	$halaman = $this->PageNo() + $base;
+			//	$this->Cell(0,0,$halaman ,'T',0,'R');
+			//} else
+			//	$this->Cell(0,0,'' , 'T',0,'');	
+			$this->Cell(0,0,$ts ,'T',0,'R');			}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(10);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	$ypos = $pdf->GetY() - 43;
+	$xpos = $pdf->GetX() + 5;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	$style = array(
+		'border' => true,
+		'vpadding' => 'auto',
+		'hpadding' => 'auto',
+		'fgcolor' => array(0,0,0),
+		'bgcolor' => false, //array(255,255,255)
+		'module_width' => 1, // width of a single module in points
+		'module_height' => 1 // height of a single module in points
+	);	
+	$pdf->write2DBarcode($url, 'QRCODE,Q', $xpos, $ypos, 30, 30, $style, 'N');
+	//$pdf->writeHTML($url, true, 0, true, 0);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSPP1($htmlContent, $pdfFiel, $url) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('Courier', 'I', 9);
+			// Page number
+			//$this->Cell(0, 10, 'Hal. '.$this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');   
+			
+			$this->Cell(0,0,'PEMERINTAH KABUPATEN JEPARA TA. ' . apbd_tahun(),'T',0,'L');
+			$ts = date("md:His|y");
+			//if ($base < 9998) {
+			//	$halaman = $this->PageNo() + $base;
+			//	$this->Cell(0,0,$halaman ,'T',0,'R');
+			//} else
+			//	$this->Cell(0,0,'' , 'T',0,'');	
+			$this->Cell(0,0,$ts ,'T',0,'R');			}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(10);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	$ypos = $pdf->GetY() - 35;
+	$xpos = $pdf->GetX() + 5;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	$style = array(
+		'border' => true,
+		'vpadding' => 'auto',
+		'hpadding' => 'auto',
+		'fgcolor' => array(0,0,0),
+		'bgcolor' => false, //array(255,255,255)
+		'module_width' => 1, // width of a single module in points
+		'module_height' => 1 // height of a single module in points
+	);	
+	$pdf->write2DBarcode($url, 'QRCODE,Q', $xpos, $ypos, 30, 30, $style, 'N');
+	//$pdf->writeHTML($url, true, 0, true, 0);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSPP1_LS($htmlContent, $pdfFiel, $url) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('Courier', 'I', 9);
+			// Page number
+			//$this->Cell(0, 10, 'Hal. '.$this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');   
+			
+			$this->Cell(0,0,'PEMERINTAH KABUPATEN JEPARA TA. ' . apbd_tahun(),'T',0,'L');
+			$ts = date("md:His|y");
+			//if ($base < 9998) {
+			//	$halaman = $this->PageNo() + $base;
+			//	$this->Cell(0,0,$halaman ,'T',0,'R');
+			//} else
+			//	$this->Cell(0,0,'' , 'T',0,'');	
+			$this->Cell(0,0,$ts ,'T',0,'R');			}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(10);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	$ypos = $pdf->GetY() + 5;
+	$xpos = $pdf->GetX() + 5;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	$style = array(
+		'border' => true,
+		'vpadding' => 'auto',
+		'hpadding' => 'auto',
+		'fgcolor' => array(0,0,0),
+		'bgcolor' => false, //array(255,255,255)
+		'module_width' => 1, // width of a single module in points
+		'module_height' => 1 // height of a single module in points
+	);	
+	$pdf->write2DBarcode($url, 'QRCODE,Q', $xpos, $ypos, 30, 30, $style, 'N');
+	//$pdf->writeHTML($url, true, 0, true, 0);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+
+function apbd_ExportSPP_Logo($htmlContent, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			//$this->SetY(-10);
+			// Set font
+			$this->SetFont('helvetica', 'I', 7);
+			// Page number
+			//$this->Cell(0, 10, 'Hal. '.$this->getAliasNumPage().' dari '.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');   
+			
+			$this->Cell(0,0,'PEMERINTAH KABUPATEN JEPARA TA. ' . apbd_tahun(),'T',0,'L');
+			$ts = date("md:His|y");
+			//if ($base < 9998) {
+			//	$halaman = $this->PageNo() + $base;
+			//	$this->Cell(0,0,$halaman ,'T',0,'R');
+			//} else
+			//	$this->Cell(0,0,'' , 'T',0,'');	
+			$this->Cell(0,0,$ts ,'T',0,'R');			}      
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    $pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(10);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    $pdf->SetFont('dejavusans', '', 9);
+	//$pdf->SetFont('Courier New', '', 9);
+    $pdf->AddPage();
+
+	$pdf->Image('files/logo_kecil.png', 15, 9, 20, 22, 'PNG', '', '', 
+			true, 150, '', false, false, 0, false, false, false);
+	
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+function apbd_ExportSPP_No_Footer($htmlContent, $pdfFiel) {
+    require_once('files/tcpdf/config/lang/eng.php');
+    require_once('files/tcpdf/tcpdf.php');
+
+	class MYPDF extends TCPDF {  
+	   // Page footer
+	} 
+	
+    $pdf = new MYPDF('P', PDF_UNIT, 'F4', true, 'UTF-8', false);
+    set_time_limit(0);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('SIPPD');
+    $pdf->SetTitle('PDF Gen');
+    $pdf->SetSubject('PDF Gen');
+    $pdf->SetKeywords('APBD');
+    $pdf->setPrintHeader(false);
+    //$pdf->setFooterFont(array('helvetica','', 10));
+    //$pdf->setFooterMargin(10);
+	//$pdf->setRightMargin(1);
+    //$pdf->setFooterMargin(PDF_MARGIN_FOOTER);	
+
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetMargins(15, 10, PDF_MARGIN_RIGHT);
+	
+	$pdf->setFooterMargin(0);
+	$pdf->SetAutoPageBreak(true, 10);
+	
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    $pdf->setLanguageArray($l);
+    //$pdf->SetFont('dejavusans', '', 9);
+	$pdf->SetFont('Courier', '', 9);
+    $pdf->AddPage();
+    $pdf->writeHTML($htmlContent, true, 0, true, 0);
+	
+	//$ypos = $pdf->GetY();
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	//$ypos = $ypos-10;
+	//$pdf->Write(0, $ypos, '', 0, 'L', true, 0, false, false, 0);
+	
+	//$pdf->SetY($ypos, true, false);
+	
+	//$pdf->writeHTML($htmlContent, true, 0, true, 0);
+    $pdf->Output($pdfFiel, 'I');
+	
+}
+
+
+function apbd_cron() {
+
+}
+
+function apbd_messagebox($message) {
+  $commands = array();
+  $commands[] = ajax_command_alert($message);
+  return array('#type' => 'ajax', '#commands' => $commands);
+}
+ 
+function apbd_format_tanggal_pendek($sp2dtgl) {
+	//drupal_set_message($sp2dtgl);
+	//drupal_set_message(strtotime($sp2dtgl));
+	$arrtgl=explode('-',$sp2dtgl);
+	//$bulanoption=array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+	return $arrtgl[2].'-'.$arrtgl[1].'-'.$arrtgl[0];	
+}
+
+function apbd_get_namabulan($bulan) {
+	$x = '';
+	switch ($bulan) {
+		case 1:
+			$x = 'Januari';
+			break;
+		case 2:
+			$x = 'Februari';
+			break;
+		case 3:
+			$x = 'Maret';
+			break;
+		case 4:
+			$x = 'April';
+			break;
+		case 5:
+			$x = 'Mei';
+			break;
+		case 6:
+			$x = 'Juni';
+			break;
+		case 7:
+			$x = 'Juli';
+			break;
+		case 8:
+			$x = 'Agustus';
+			break;
+		case 9:
+			$x = 'September';
+			break;
+		case 10:
+			$x = 'Oktober';
+			break;
+		case 11:
+			$x = 'November';
+			break;
+		case 12:
+			$x = 'Desember';
+			break;
+	}
+
+	return $x;
+	
+} 
+//glyphicon glyphicon-check+
+//<span class="label label-default">
+
+function apbd_icon_plus() {
+	return '<span class="glyphicon glyphicon-chevron-up" style="color:blue"></span>';
+}
+
+function apbd_icon_minus() {
+	return '<span class="glyphicon glyphicon-chevron-down" style="color:red"></span>';
+}
+
+function apbd_icon_valid() {
+	return '<span class="glyphicon glyphicon-ok-sign" style="color:blue"></span>';
+}
+
+function apbd_icon_sudah() {
+	return '<span class="glyphicon glyphicon-ok-sign" style="color:green"></span>';
+}
+
+function apbd_icon_belum() {
+	return '<span class="glyphicon glyphicon-file" style="color:orange"></span>';
+}
+
+function apbd_button_baru($link) {
+	return l('<span class="glyphicon glyphicon-file" aria-hidden="true"></span> Baru', $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-sm')));
+}
+
+function apbd_button_baru_custom($link, $caption) {
+	return l('<span class="glyphicon glyphicon-file" aria-hidden="true"></span> ' . $caption, $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-sm')));
+}
+
+function apbd_button_print($link) {
+	return l('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Cetak', $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-sm')));
+}
+
+function apbd_button_excel($link) {
+	return l('<span class="glyphicon glyphicon-list" aria-hidden="true"></span> Excel', $link ,array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-sm')));
+}
+
+function apbd_button_bukubesar($link) {
+	return l('Buku Besar', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-success btn-xs btn-block')));
+}
+
+function apbd_link_print_small($link, $caption) {
+	return l('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> ' . $caption, $link , array ('html' => true));
+}
+
+function apbd_button_baru_custom_small($link, $caption) {
+	return l('<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> ' . $caption, $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-xs')));
+}
+
+function apbd_button_jurnal($link) {
+	return l('Edit', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-success btn-xs btn-block', 'query' => drupal_get_destination())));
+}
+
+function apbd_button_hapus($link) {
+	return l('Hapus', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-danger btn-xs btn-block')));
+}
+
+function apbd_button_hapus_disabled() {
+	return l('Hapus', '', array ('html' => true, 'attributes'=> array ('class'=>'btn btn-danger btn-xs disabled btn-block')));
+}
+
+function apbd_button_cetak($link) {
+	return l('Cetak', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-info btn-xs btn-block')));
+}
+
+function apbd_button_resume($link) {
+  return l('<span aria-hidden="true"></span> Resume', $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-primary btn-sm')));
+}
+
+function apbd_button_kegiatan($link) {
+	return l('Kegiatan', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-success btn-xs btn-block')));
+}
+
+function apbd_button_register($link) {
+	return l('Register', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-warning btn-xs btn-block')));;
+}
+function apbd_button_user($link) {
+	return l('Edit Role', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-danger btn-xs btn-block')));;
+}
+function apbd_button_sp2d($link) {
+	return l('SP2D', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-warning btn-xs btn-block')));
+
+}
+function apbd_button_jurnalkan($link) {
+	return l('Baru', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-warning btn-xs btn-block')));
+
+}
+function apbd_button_jurnalitem($link) {
+	return l('Rincian', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-warning btn-xs btn-block')));
+
+}
+
+function apbd_button_analisis($link) {
+	return l('Analisis', $link, array ('html' => true, 'attributes'=> array ('class'=>'btn btn-info btn-xs btn-block')));
+}
+
+function apbd_button_chart($link) {
+	return l('<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Grafis', $link , array ('html' => true, 'attributes'=> array ('class'=>'btn btn-danger pull-right')));
+}
+function apbd_button_tampilkan() {
+	return t('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>Tampilkan');
+}
+
+function apbd_getkodejurnal($kodeuk) {
+	
+	$v =0;
+	/*
+	$query = "select jurnalid from {jurnal} where jurnalid like '" . $parts . "%' order by jurnalid desc limit 1";
+	$pres = db_query($query);
+	if ($data=db_fetch_object($pres)) {
+		$v = (int) substr($data->kodekeg,-3);
+	} 
+	*/	
+
+	$query = db_select('jurnal', 'j')->extend('TableSort');
+	$query->fields('j', array('jurnalid'));
+	$query->condition('j.jurnalid', db_like($kodeuk) . '%', 'LIKE');
+	$query->orderBy('j.jurnalid', 'DESC');
+	$query->range(0, 1);
+	//dpq($query);
+	
+	# execute the query
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$v = (int) substr($data->jurnalid,-5);
+	}		
+	$v++;
+	$s = '00000' . $v;
+	$s = $kodeuk . substr($s, strlen($s)-5);
+	return $s;
+}
+
+function apbd_getkodedokumen($kodeuk) {
+	
+	$query = db_select('dokumen', 'j')->extend('TableSort');
+	$query->fields('j', array('dokid'));
+	$query->condition('j.dokid', db_like($kodeuk) . '%', 'LIKE');
+	$query->orderBy('j.dokid', 'DESC');
+	$query->range(0, 1);
+	//dpq($query);
+	
+	$v = 0;
+	# execute the query
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$v = (int) substr($data->dokid,-5);
+	}		
+	$v++;
+	$s = '00000' . $v;
+	$s = $kodeuk . substr($s, strlen($s)-5);
+	return $s;
+}
+
+
+function apbd_getKodeRORKPPKD() {
+	return "31301001";
+}
+
+function apbd_getKodeROSAL() {
+	return "73101001";
+} 
+
+function apbd_getKodeROAPBD() {
+	return "11101001";
+} 
+function apbd_getKodeROBendaharaPenerimaan() {
+	return "11103001";
+} 
+function apbd_getKodeROPiutangDefault() {
+	return "11310001";
+} 
+function apbd_getKodeROBendaharaPengeluaran() {
+	return "11102001";
+} 
+function apbd_getKodeRORPDT() {
+	return "11799000";
+}
+function apbd_getKodeRORADT() {
+	return "13999000";
+}
+
+function apbd_tahun() {
+	return '2019';
+}
+
+function apbd_perda() {
+	return 'Nomor 73 Tahun 2016 tentang Penjabaran APBD Kabupaten Jepara';
+}
+
+function apbd_getbulan($bulan) {
+	switch($bulan) {
+		case '1':
+			$x = "Januari";    
+			break;
+		case '2':
+			$x = "Februari";    
+			break;
+		case '3':
+			$x = "Maret";    
+			break;
+		case '4':
+			$x = "April";    
+			break;
+		case '5':
+			$x = "Mei";    
+			break;
+		case '6':
+			$x = "Juni";    
+			break;
+		case '7':
+			$x = "Juli";    
+			break;
+		case '8':
+			$x = "Agustus";    
+			break;
+		case '9':
+			$x = "September";    
+			break;
+		case '10':
+			$x = "Oktober";    
+			break;
+		case '11':
+			$x = "Nopember";    
+			break;
+		case '12':
+			$x = "Desember";    
+			break;
+
+		default:
+			//drupal_access_denied();
+			break;
+	}	
+	return $x;
+}
+
+function soap_sp2d_add($dokid) {
+require_once('files/nusoap/nusoap.php');
+
+//OPEN DATABASE
+$query = db_select('dokumen', 'd');
+$query->join('unitkerja', 'u', 'd.kodeuk=u.kodeuk');
+$query->fields('d', array('dokid', 'spmno', 'spmtgl', 'sp2dno', 'sp2dtgl', 'kodekeg', 'keperluan', 'jumlah', 'potongan', 'netto', 
+		'penerimanama', 'penerimabankrekening', 'penerimabanknama', 'penerimanpwp', 'pptknama', 'pptknip', 
+		'sp2dok', 'spmok', 'jenisdokumen', 'jenisgaji', 'kodeuk'));
+
+$query->fields('u', array('namasingkat'));
+$query->condition('d.dokid', $dokid, '=');
+
+//dpq($query);	
+	
+# execute the query	
+$results = $query->execute();
+foreach ($results as $data) {
+	
+	$kodekeg = $data->kodekeg;
+
+	//TANGGAL
+	$tgl = $data->sp2dtgl;	
+	$tglfix= explode('-',$tgl);
+	$sp2dtgl=$tglfix[1].'-'.$tglfix[2].'-'.$tglfix[0];
+	
+	$tgl = $data->spmtgl;	
+	$tglfix= explode('-',$tgl);
+	$spmtgl=$tglfix[1].'-'.$tglfix[2].'-'.$tglfix[0];
+
+	$sp2dno = $data->sp2dno;
+	$spmno = $data->spmno;
+
+	$keperluan = $data->keperluan;
+
+	$penerimanama = $data->penerimanama;
+	$penerimarekening = $data->penerimabankrekening;
+	$penerimabank = $data->penerimabanknama;
+	$penerimanpwp = $data->penerimanpwp;
+
+	$jumlah = $data->jumlah;
+	$potongan = $data->potongan;
+	$netto = $data->netto;
+	
+	$jenisdokumen = $data->jenisdokumen;
+	$jenisgaji = $data->jenisgaji;
+	$kodeuk = $data->kodeuk;
+	
+	if ($jenisdokumen != '4')  $penerimanama = 'BENDAHARA PENGELUARAN ' . $data->namasingkat . ' (' . $penerimanama . ')';
+}
+
+$iwp = '0';
+$taperum = '0';
+$askes = '0';
+$jkk = '0';
+$jkm = '0';
+$pph = '0';
+$pph_id = '0';
+
+$pph21 = '0';
+$pph22 = '0';
+$pph23 = '0';
+$pphlain = '0';
+$ppn = '0';
+	
+//http://simkedajepara.web.id/sp2d2017service/Service1.svc?wsdl
+$client = new nusoap_client("http://simkedajepara.web.id/sp2d2017service/Service1.svc?wsdl", "wsdl");
+$client->soap_defencoding = 'UTF-8';
+$err = $client->getError();
+
+/**
+ * Untuk menampilkan error
+ */
+if ($err) {
+	$ret = '<h2>Constructor error<pre>' . $err . '</pre>';
+	$ret .= '<h2>Debug</h2><pre>' . htmlspecialchars($client->getDebug(), ENT_QUOTES) . '</pre>';
+exit();
+}
+
+//DOKUMEN
+$sp2d = $dokid . '^' . $kodekeg . '^' . $sp2dno . '^' . $sp2dtgl . '^' . $spmno . '^' . $spmtgl . '^' . $keperluan . '^' . $penerimanama . '^' . $penerimarekening . '^' . $penerimabank . '^' . $penerimanpwp . '^' . $jumlah . '^' . $potongan . '^' . $netto . '^' . $iwp . '^' . $taperum . '^' . $askes . '^' . $jkk . '^' . $jkm . '^' . $pph . '^' . $pph_id . '^' . $pph21 . '^' . $pph22 . '^' . $pph23 . '^' . $pphlain . '^' . $ppn . '^' . $jenisdokumen . '^' . $kodeuk;
+//drupal_set_message($sp2d);	
+$result = $client->call('InsertSP2D',array('sp2d' => $sp2d));
+
+//POTONGAN GAJI
+
+if ($jenisdokumen=='3') {
+	$query = db_select('dokumenpotongan', 'd');
+	$query->join('ltpotongan', 'p', 'd.kodepotongan=p.kodepotongan');
+	$query->fields('d', array('dokid', 'kodepotongan', 'jumlah', 'keterangan'));
+	$query->fields('p', array('uraian'));
+
+	//$query->fields('u', array('namasingkat'));
+	$query->condition('d.dokid', $dokid, '=');
+	$query->condition('d.jumlah', 0, '>');
+
+	//dpq($query);	
+		
+	# execute the query	
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$sp2dpotongan = $dokid . '^' . $data->kodepotongan . '^' . $data->jumlah . '^' . $data->keterangan . '^' . $data->uraian;			
+		$result = $client->call('InsertSP2DPotongan',array('sp2dpotongan' => $sp2dpotongan));
+	}		
+}
+
+//PAJAK
+if ($jenisdokumen=='3') {
+	$query = db_select('dokumenpajak', 'd');
+	$query->join('ltpajak', 'p', 'd.kodepajak=p.kodepajak');
+	$query->fields('d', array('dokid', 'kodepajak', 'jumlah', 'keterangan'));
+	$query->fields('p', array('uraian'));
+
+	//$query->fields('u', array('namasingkat'));
+	$query->condition('d.dokid', $dokid, '=');
+
+	//dpq($query);	
+		
+	# execute the query	
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$sp2dpajak = $dokid . '^' . $data->kodepajak . '^' . $data->jumlah . '^' . $data->keterangan . '^' . $data->uraian . '^0';				
+		$result = $client->call('InsertSP2DPajak',array('sp2dpajak' => $sp2dpajak));
+	}		
+}
+
+
+if ($client->fault) {
+	$ret .= '<h2>Fault</h2>';
+} else {
+	// Check for errors
+	$err = $client->getError();
+	if ($err) {
+		// Display the error
+		$ret .= '<h2>Error</h2><pre>' . $err . '</pre>';
+	} else {
+		$ret = "sukses";
+	}
+}	
+return $ret;
+}	
+
+	
+function soap_sp2d_delete($dokid) {
+require_once('files/nusoap/nusoap.php');
+	
+	//http://simkedajepara.web.id/sp2d2017service/Service1.svc?wsdl
+    $client = new nusoap_client("http://simkedajepara.web.id/sp2d2017service/Service1.svc?wsdl", "wsdl");
+    $client->soap_defencoding = 'UTF-8';
+    $err = $client->getError();
+    
+    /**
+     * Untuk menampilkan error
+     */
+    if ($err) {
+		$ret = '<h2>Constructor error<pre>' . $err . '</pre>';
+		$ret .= '<h2>Debug</h2><pre>' . htmlspecialchars($client->getDebug(), ENT_QUOTES) . '</pre>';
+	exit();
+    }
+    
+    $result = $client->call('DeleteSP2D',array('dokid'=>$dokid));
+    if ($client->fault) {
+        $ret .= '<h2>Fault</h2>';
+    } else {
+        // Check for errors
+        $err = $client->getError();
+        if ($err) {
+            // Display the error
+            $ret .= '<h2>Error</h2><pre>' . $err . '</pre>';
+        } else {
+            // Display the result
+            //$nama = $peg["getNamaPegawaiResult"];
+            //$data = $result["getDataPegawaiResult"];
+			
+			$ret = "sukses";
+        }
+    }	
+	return $ret;
+}	
+	
+function apbd_bud_jabatan() {
+	if (variable_get('ttd_by_kuasa_bud', '0'))
+		$x = variable_get('kuasa_bud_jabatan', 'BENDAHARA UMUM DAERAH');
+	else
+		$x = variable_get('bud_jabatan', 'BENDAHARA UMUM DAERAH');
+	return $x;
+}	
+
+function apbd_bud_nama() {
+	if (variable_get('ttd_by_kuasa_bud', '0'))
+		$x = variable_get('kuasa_bud_nama', 'SITI NUR JANAH, SE');
+	else
+		$x = variable_get('bud_nama', 'Drs. ANWAR HARYONO, MM');
+	return $x;
+}	
+
+function apbd_bud_nip() {
+	if (variable_get('ttd_by_kuasa_bud', '0'))
+		$x = variable_get('kuasa_bud_nip', '19650903 198603 2 018');
+	else
+		$x = variable_get('bud_nip', '19580318 198503 1 011');
+	return $x;
+}	
+
+
+function apbd_getkodespj($kodeuk) {
+	
+	$query = db_select('bendahara' . $kodeuk , 'j')->extend('TableSort');
+	$query->fields('j', array('bendid'));
+	$query->condition('j.bendid', db_like($kodeuk) . '%', 'LIKE');
+	$query->orderBy('j.bendid', 'DESC');
+	$query->range(0, 1);
+	//dpq($query);
+	
+	$v = 0;
+	# execute the query
+	$results = $query->execute();
+	foreach ($results as $data) {
+		$v = (int) substr($data->bendid,-5);
+	}		
+	$v++; 
+	$s = '00000' . $v;
+	$s = $kodeuk . substr($s, strlen($s)-5);
+	return $s;
+}
+
+function createT($header, $row){
+	$str='<table class="table table-striped">';
+	if(sizeof($header)>0)
+		$str.='<thead>';
+	for($n=0;$n<sizeof($header);$n++){
+		$str.='<tr>';
+		for($m=0;$m<sizeof($header[$n]);$m++){
+			if(isset($header[$n][$m]['colspan'])){
+				$colspan=$header[$n][$m]['colspan'];
+			}
+			else{
+				$colspan='';
+			}
+			if(isset($header[$n][$m]['rowspan']) && $header[$n][$m]['rowspan']!=null){
+				$rowspan=$header[$n][$m]['rowspan'];
+			}
+			else{
+				$rowspan='';
+			}
+			
+			$str.='<th align="center" rowspan="' . $rowspan . '" colspan="' . $colspan . '" style="'.$header[$n][$m]['style'].'" width="'.$header[$n][$m]['width'].'">' . $header[$n][$m]['data'] . '</th>';
+		}
+		$str.='</tr>';
+		
+	}
+	if(sizeof($header)>0)
+		$str.='</thead>';
+	
+	for($n=0;$n<sizeof($row);$n++)
+	{
+		$str.='<tr >';
+		for($m=0;$m<sizeof($row[$n]);$m++)
+		{
+			if(isset($row[$n][$m]['colspan']) && $row[$n][$m]['colspan']!=null){
+				$colspan=$row[$n][$m]['colspan'];
+			}
+			else{
+				$colspan='';
+			}
+			
+			$str.='<td colspan="' . $colspan . '" width="'.$row[$n][$m]['width'].'" style="'.$row[$n][$m]['style'].'" align="'.$row[$n][$m]['align'].'">'.$row[$n][$m]['data'].'</td>';
+		}
+		$str.='</tr>';
+	}
+	$str.='</table>';
+	return $str;
+}
+
+
+function createT_Asli($header,$row,$set=null){
+	$str='<table class="table table-striped">';
+	if(sizeof($header)>0)
+		$str.='<thead>';
+	for($n=0;$n<sizeof($header);$n++){
+		$str.='<tr>';
+		for($m=0;$m<sizeof($header[$n]);$m++){
+			if(isset($header[$n][$m]['colspan'])){
+				$colspan=$header[$n][$m]['colspan'];
+			}
+			else{
+				$colspan='';
+			}
+			if(isset($header[$n][$m]['rowspan']) && $header[$n][$m]['rowspan']!=null){
+				$rowspan=$header[$n][$m]['rowspan'];
+			}
+			else{
+				$rowspan='';
+			}
+			
+			$str.='<th  align="center" rowspan="'.$rowspan.'" style="'.$header[$n][$m]['style'].'" width="'.$header[$n][$m]['width'].'">'.strtoupper($header[$n][$m]['data']).'</th>';
+		}
+		$str.='</tr>';
+		
+	}
+	if(sizeof($header)>0)
+		$str.='</thead>';
+	/*
+	$str='<table><th><td>a</td>';
+	$str.='<td>b</td></th></table>';
+
+	$str.='<td>b</td></th></table>';*/
+	for($n=0;$n<sizeof($row);$n++)
+	{
+		$str.='<tr >';
+		for($m=0;$m<sizeof($row[$n]);$m++)
+		{
+			$str.='<td width="'.$row[$n][$m]['width'].'" style="'.$row[$n][$m]['style'].'" align="'.$row[$n][$m]['align'].'">'.$row[$n][$m]['data'].'</td>';
+		}
+		$str.='</tr>';
+	}
+	$str.='</table>';
+	return $str;
+}
+
+function apbd_getnospj_gu($kodeuk) {
+	
+
+	$query = db_select('bendahara' . $kodeuk, 'd')->extend('TableSort');
+	$query->fields('d', array('spjno'));
+	$query->condition('d.kodeuk', $kodeuk, '=');
+
+	$or = db_or();
+	$or->condition('d.jenis', 'gu-spj', '=');
+	$or->condition('d.jenis', 'gu-spj', '=');
+	$query->condition($or);
+	
+	$query->orderBy('d.spjno', 'DESC');
+	$query->range(0, 1);
+	//dpq($query);
+	
+	$v = 0;
+	# execute the query
+	$results = $query->execute();
+	foreach ($results as $data) {
+		//drupal_set_message($data->sp2dno);
+		//drupal_set_message(substr($data->sp2dno,0,5));
+		$v = (int) substr($data->spjno,0,5);
+	}		
+	$v++;
+	$s = '00000' . $v;
+	$s = substr($s, strlen($s)-5);
+	
+	$s .= '-' . $kodeuk;
+
+	return $s;
+
+} 
+
+function apbd_date_convert_db2form($tanggal) {
+	$arr_tgl = explode("-", $tanggal);	
+	return  mktime(0, 0, 0, $arr_tgl[1], $arr_tgl[2], $arr_tgl[0]);
+}
+
+function apbd_date_convert_form2db($tanggal) {
+	//sprintf("%02d", $num)
+	$hari = sprintf("%02d", $tanggal['day']);
+	$bulan = sprintf("%02d", $tanggal['month']);
+	return  $tanggal['year'] . '-' . $bulan . '-' . $hari;
+}
+
+function apbd_date_create_currdate_form() {
+	return  mktime(0, 0, 0, date('m'), date('d'), apbd_tahun());
+}
+
+function apbd_date_create_dateone_form() {
+	return  mktime(0, 0, 0, date('m'), 1, apbd_tahun());
+}
+
+function apbd_readrealisasikegiatan($kodekeg, $tanggal) {
+	$cair = 0;
+	
+	$kodeuk = substr($kodekeg, 4, 2);
+	
+	//SPJ
+	$query = db_select('bendahara' . $kodeuk, 'b');
+	$query->addExpression('SUM(b.total)', 'total');
+
+	$or = db_or();
+	$or->condition('b.jenis', 'gaji', '=');
+	$or->condition('b.jenis', 'ls', '=');
+	$or->condition('b.jenis', 'gu-spj', '=');
+	$or->condition('b.jenis', 'tu-spj', '=');
+	$query->condition($or);
+	
+	$query->condition('b.kodekeg', $kodekeg, '=');
+	//$query->condition('b.tanggal', $tanggal, '<=');
+	$res_spj = $query->execute();
+	foreach ($res_spj as $data_spj) {
+		$cair = $data_spj->total;
+	}
+
+	//RETUR
+	$query = db_select('bendahara' . $kodeuk, 'b');
+	$query->addExpression('SUM(b.total)', 'total');
+
+	$query->condition('b.kodekeg', $kodekeg, '=');
+	$query->condition('b.jenis', 'ret-spj', '=');
+	//$query->condition('b.tanggal', $tanggal, '<=');
+	$res_spj = $query->execute();
+	foreach ($res_spj as $data_spj) {
+		$cair -= $data_spj->total;
+	}	
+	
+	return $cair;
+}
+
+function apbd_readrealisasikegiatan_rekening($kodekeg, $kodero, $tanggal) {
+	$cair = 0;
+	
+	//SPJ
+	$kodeuk = substr($kodekeg, 4, 2);
+	$query = db_select('bendahara' . $kodeuk, 'b');
+	$query->innerJoin('bendaharaitem' . $kodeuk, 'bi', 'b.bendid=bi.bendid');
+	$query->addExpression('SUM(bi.jumlah)', 'total');
+
+	$or = db_or();
+	$or->condition('b.jenis', 'gaji', '=');
+	$or->condition('b.jenis', 'ls', '=');
+	$or->condition('b.jenis', 'gu-spj', '=');
+	$or->condition('b.jenis', 'tu-spj', '=');
+	$or->condition('b.jenis', 'pindahbuku', '=');
+	$query->condition($or);
+	
+	$query->condition('b.kodekeg', $kodekeg, '=');
+	//$query->condition('b.tanggal', $tanggal, '<=');
+	$query->condition('bi.kodero', $kodero, '=');
+	$res_spj = $query->execute();
+	foreach ($res_spj as $data_spj) {
+		$cair = $data_spj->total;
+	}
+
+	//RETUR
+	if ($cair>0) {
+		$query = db_select('bendahara' . $kodeuk, 'b');
+		$query->innerJoin('bendaharaitem' . $kodeuk, 'bi', 'b.bendid=bi.bendid');
+		$query->addExpression('SUM(bi.jumlah)', 'total');
+
+		$query->condition('b.kodekeg', $kodekeg, '=');
+		$query->condition('b.jenis', 'ret-spj', '=');
+		//$query->condition('b.tanggal', $tanggal, '<=');
+		$query->condition('bi.kodero', $kodero, '=');
+		$res_spj = $query->execute();
+		foreach ($res_spj as $data_spj) {
+			if ($data_spj->total>0)
+				$cair -= $data_spj->total;
+			else
+				$cair += $data_spj->total;
+		}	
+	}
+	return $cair;
+}
+
+function dateapi_convert_timestamp_to_datetime($timestamp) {
+
+	$date = new DateTime($timestamp);
+	//date_timezone_set($date, timezone_open(drupal_get_user_timezone()));
+	return date_format($date, 'Y-m-d');
+}
+
+function dateapi_convert_datetime_to_timestamp($datetime) {
+	
+	$date = date_create_from_format('Y-m-d',$datetime,timezone_open(drupal_get_user_timezone()));
+	return date_timestamp_get($date);
+}
+
+function apbd_kodekeg_pembiayaan() {
+	return apbd_tahun() . '00666666';
+}	
+
+function apbd_blank_space() {
+	return '&nbsp;';
+}	

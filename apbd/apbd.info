@@ -1,0 +1,6 @@
+; $Id$
+name = "simKEDA Modul Umum"
+description = "Penatausahaan - Modul Umum"
+;dependencies[] = 
+core = 7.x
+package="simKEDA"

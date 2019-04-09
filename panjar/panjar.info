@@ -1,0 +1,6 @@
+; $Id$
+name = "Perbendaharaan - Panjar"
+description = "Perbendaharaan - Panjar"
+;dependencies[] = 
+core = 7.x
+package="simKEDA"

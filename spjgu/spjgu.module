@@ -1,0 +1,69 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function spjgu_perm() {
+    return array(
+        'access penata content',
+		'access laporan penata'
+	);
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function spjgu_menu() {
+//ITEM  (DB Tata U)
+	$items['spjgu/baru'] = array (
+      'title' => 'SPJ GU/TU | Pilih Kegiatan',
+	  'description' => 'SPJ GU/TU | Pilih Kegiatan',
+	  //'title callback' => 'spjgu_title_callback',	  
+      'page callback' => 'spjgu_newpick_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in', 
+      'weight' => 11,
+      'file' => 'spjgu_newpick_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['spjgu/barupost'] = array (
+      'title' => 'SPJ GU/TU | Baru',
+	  'description' => 'SPJ GU/TU | Baru',
+	  //'title callback' => 'spjgu_title_callback',	  
+      'page callback' => 'spjgu_newpost_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjgu_newpost_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['spjgu/edit'] = array (
+      'title' => 'SPJ GU/TU',
+	  'description' => 'SPJ GU/TU',
+	  //'title callback' => 'spjgu_title_callback',	  
+      'page callback' => 'spjgu_edit_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjgu_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['spjgu/delete'] = array (
+      'title' => 'Hapus SPJ GU/TU',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('spjgu_delete_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'spjgu_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );		
+
+
+    return $items;
+}
+

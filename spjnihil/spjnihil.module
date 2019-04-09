@@ -1,0 +1,69 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_perm().
+ */
+//onModuleCreationWizard
+function spjnihil_perm() {
+    return array(
+        'access penata content',
+		'access laporan penata'
+	);
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function spjnihil_menu() {
+//ITEM  (DB Tata U)
+	$items['spjnihil/baru'] = array (
+      'title' => 'SPJ Nihil | Pilih Kegiatan',
+	  'description' => 'SPJ Nihil | Pilih Kegiatan',
+	  //'title callback' => 'spjnihil_title_callback',	  
+      'page callback' => 'spjnihil_newpick_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in', 
+      'weight' => 11,
+      'file' => 'spjnihil_newpick_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+	$items['spjnihil/barupost'] = array (
+      'title' => 'SPJ Nihil | Baru',
+	  'description' => 'SPJ Nihil | Baru',
+	  //'title callback' => 'spjnihil_title_callback',	  
+      'page callback' => 'spjnihil_newpost_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjnihil_newpost_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+	$items['spjnihil/edit'] = array (
+      'title' => 'SPJ Nihil',
+	  'description' => 'SPJ Nihil',
+	  //'title callback' => 'spjnihil_title_callback',	  
+      'page callback' => 'spjnihil_edit_main',
+      //'access arguments' => array ('access content'),
+	  'access callback' => 'user_is_logged_in',
+      'weight' => 11,
+      'file' => 'spjnihil_edit_main.php',
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['spjnihil/delete'] = array (
+      'title' => 'Hapus SPJ Nihil',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('spjnihil_delete_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access arguments' => array ('access content'),
+      'file' => 'spjnihil_delete_form.php',
+      'type' => MENU_CALLBACK,
+    );		
+
+
+    return $items;
+}
+

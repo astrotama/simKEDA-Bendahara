@@ -1,0 +1,4 @@
+name = "Anggaran Module"
+description = "Perbendaharaan - Modul Angaran"
+core = 7.x
+package="simKEDA"

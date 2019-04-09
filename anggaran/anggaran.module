@@ -1,0 +1,47 @@
+<?php
+
+function anggaran_menu() {
+  
+  $items['anggaran'] = array (
+    'title' => 'Data Kegiatan',
+      'page callback' => 'anggaran_main',
+      'page arguments' => array('anggaran_main'),
+      'access callback' => 'user_is_logged_in',
+      'file' => 'anggaran_main.php',
+      'type' => MENU_CALLBACK,
+    
+    );
+	//contact edit
+	$items['anggaran/edit'] = array (
+      'title' => 'Edit Anggaran',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('anggaran_edit_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access callback' => 'user_is_logged_in',
+      'file' => 'anggaran_edit_form.php',
+      'type' => MENU_CALLBACK,
+    );
+
+	$items['anggaran/transferpenetapan'] = array (
+      'title' => 'Transfer Penetapan',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('anggaran_import_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access callback' => 'user_is_logged_in',
+      'file' => 'anggaran_import_form.php',
+      'type' => MENU_CALLBACK,
+    );
+
+	$items['anggaran/transferperubahan'] = array (
+      'title' => 'Transfer Anggaran Perubahan',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('anggaran_importperubahan_form'),
+      //'access arguments' => array ('desa penghapusan'),
+	  'access callback' => 'user_is_logged_in',
+      'file' => 'anggaran_importperubahan_form.php',
+      'type' => MENU_CALLBACK,
+    );
+	
+    return $items;
+}
+
